@@ -8,7 +8,9 @@
 using namespace std;
 
 string palavra_aleatoria();
-void mostratraco(pal);
+void mostratraco(string a);
+void teste_palavra(string palavra,char letra);
+
 
 int main(){
 
@@ -18,23 +20,51 @@ int main(){
    cout << "|                                          |" << endl;
    cout << "--------------------------------------------" << endl;
 
-   char letra;
+   vector<char> letra;
    string palavra = palavra_aleatoria();
 
-   mostratraco(palavra);
-   cin >> letra;
+   int tentativa;
+   int *pt_tentaiva=&tentativa
 
-   for(int c=0;c<(palavra.length());c++){
-      if(letra==palavra[c]){ cout <<  palavra[c];}else{ cout << "__ ";}
+   for(tentativa=1;tentativa<palavra.length();tentativa++)
+   {
+       cout << palavra ;
+       mostratraco(palavra);
+       cin >> letra;
+
+       teste_palavra(palavra,letra);
    }
+
+
+
+
+
    return 0;
 }
-void mostratraco(*pal){
-   for(int c=0;pal.length();c++){
+void teste_palavra(string palavra,vector<char>& letra)
+{
+   int tentativa=*pt_tentativa;
+
+   for(int c=0;c<(palavra.length());c++)
+   {  for(int d=0;d<tentativa;d++)
+      {
+         if(letra[d]==palavra[c]{
+            cout << palavra[c];
+         }else{
+            cout << " __ ";
+         }
+      }
+   }
+}
+void mostratraco(string a)
+{
+   for(int c=0;c<(a.length());c++)
+   {
       cout<< "__ ";
    }
 }
-string palavra_aleatoria(){
+string palavra_aleatoria()
+{
    vector<string> palavras;
    string linha;
 
