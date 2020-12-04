@@ -24,15 +24,14 @@ int main(){
    string palavra = palavra_aleatoria();
 
    int tentativa;
-   int *pt_tentaiva=&tentativa
 
    for(tentativa=1;tentativa<palavra.length();tentativa++)
    {
        cout << palavra ;
        mostratraco(palavra);
-       cin >> letra;
+       cin >> letra[tentativa-1];
 
-       teste_palavra(palavra,letra);
+       teste_palavra(palavra,letra,tentativa);
    }
 
 
@@ -41,14 +40,13 @@ int main(){
 
    return 0;
 }
-void teste_palavra(string palavra,vector<char>& letra)
+void teste_palavra(string palavra,vector<char>& letra,int tentativa)
 {
-   int tentativa=*pt_tentativa;
 
    for(int c=0;c<(palavra.length());c++)
    {  for(int d=0;d<tentativa;d++)
       {
-         if(letra[d]==palavra[c]{
+         if(letra[d]==palavra[c]){
             cout << palavra[c];
          }else{
             cout << " __ ";
