@@ -9,7 +9,7 @@ using namespace std;
 
 string palavra_aleatoria();
 void mostratraco(string a);
-void teste_palavra(string palavra,char letra);
+void teste_palavra(string palavra,vector<char> letra,int tentativa);
 
 
 int main(){
@@ -20,18 +20,31 @@ int main(){
    cout << "|                                          |" << endl;
    cout << "--------------------------------------------" << endl;
 
-   vector<char> letra;
+   char letra[15];
    string palavra = palavra_aleatoria();
 
    int tentativa;
-
+   int posi_letra=0;
+   mostratraco(palavra);
+   cout << palavra << endl;
    for(tentativa=1;tentativa<palavra.length();tentativa++)
    {
-       cout << palavra ;
-       mostratraco(palavra);
-       cin >> letra[tentativa-1];
+       cin >> letra[posi_letra];
+       posi_letra++;
 
-       teste_palavra(palavra,letra,tentativa);
+      /* teste_palavra(palavra,letra,tentativa);*/
+
+      for(int c=0;c<(palavra.length());c++)
+      {
+         for(int d=0;d<posi_letra;d++)
+         {
+ 	     if(letra[d]==palavra[c]){
+                   cout << palavra[c];
+             }else{
+                   cout << " __ ";
+             }
+        }
+      }
    }
 
 
@@ -40,7 +53,7 @@ int main(){
 
    return 0;
 }
-void teste_palavra(string palavra,vector<char>& letra,int tentativa)
+/*void teste_palavra(string palavra,vector<char> letra,int tentativa)
 {
 
    for(int c=0;c<(palavra.length());c++)
@@ -53,7 +66,7 @@ void teste_palavra(string palavra,vector<char>& letra,int tentativa)
          }
       }
    }
-}
+}*/
 void mostratraco(string a)
 {
    for(int c=0;c<(a.length());c++)
