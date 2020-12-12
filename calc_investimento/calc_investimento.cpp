@@ -1,8 +1,9 @@
 #include <iostream>
-
+#include <string>
 using namespace std;
 
 int main(){
+    repetir:
     int  valor_ini, aporte, meses;
     float taxa, acumulado;
 
@@ -27,8 +28,18 @@ int main(){
     printf(" mes %d RS%.2f\n",c,acumulado);
     }
 
-   cout <<  "valor depositado R$" << (valor_ini+(aporte*meses)) << endl;
+   cout << endl <<  "valor depositado R$" << (valor_ini+(aporte*meses)) << endl;
 
    cout << "valor de juros adquirido: R$" << (acumulado-(valor_ini+(aporte*meses))) << endl;
+
+   string opcao;
+   cout << endl << "deseja refazer os calculos?[s/n]";cin >> opcao;
+
+   if(opcao=="s" || opcao=="S"){
+      goto repetir;
+   }else{
+       cout << "saindo do programa" << endl;
+   }
    return 0;
 }
+
