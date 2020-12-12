@@ -8,10 +8,7 @@
 using namespace std;
 
 string palavra_aleatoria();
-void mostratraco(string a);
-void teste_palavra(string palavra,vector<char> letra,int tentativa);
-
-
+void mostratraco(string palavra);
 int main(){
 
    cout << "--------------------------------------------" << endl;
@@ -20,58 +17,36 @@ int main(){
    cout << "|                                          |" << endl;
    cout << "--------------------------------------------" << endl;
 
-   char letra[15];
    string palavra = palavra_aleatoria();
 
-   int tentativa;
-   int posi_letra=0;
-   mostratraco(palavra);
+   char letra;
+   int vetor[palavra.length()];
+   for(int d=0;d<(palavra.length());d++){ vetor[d]=0; }
+
    cout << palavra << endl;
-   for(tentativa=1;tentativa<palavra.length();tentativa++)
-   {
-       cin >> letra[posi_letra];
-       posi_letra++;
+   mostratraco(palavra);
 
-      /* teste_palavra(palavra,letra,tentativa);*/
-
-      for(int c=0;c<(palavra.length());c++)
-      {
-         for(int d=0;d<posi_letra;d++)
-         {
- 	     if(letra[d]==palavra[c]){
-                   cout << palavra[c];
-             }else{
-                   cout << " __ ";
-             }
-        }
-      }
+   for(int r=0;r<(palavra.length());r++){
+       cin >> letra;
+       for(int c=0;c<(palavra.length());c++){
+           if(letra==palavra[c]){
+               vetor[c]=1;
+           }
+       }
+       for(int t=0;t<(palavra.length());t++){
+           if(vetor[t]==1){
+               cout << " " << palavra[t] << " ";
+           }else{
+               cout << " __ ";
+           }
+       }
    }
-
-
-
-
 
    return 0;
 }
-/*void teste_palavra(string palavra,vector<char> letra,int tentativa)
-{
-
-   for(int c=0;c<(palavra.length());c++)
-   {  for(int d=0;d<tentativa;d++)
-      {
-         if(letra[d]==palavra[c]){
-            cout << palavra[c];
-         }else{
-            cout << " __ ";
-         }
-      }
-   }
-}*/
-void mostratraco(string a)
-{
-   for(int c=0;c<(a.length());c++)
-   {
-      cout<< "__ ";
+void mostratraco(string palavra){
+   for(int c=0;c<(palavra.length());c++){
+      cout << " __ ";
    }
 }
 string palavra_aleatoria()
