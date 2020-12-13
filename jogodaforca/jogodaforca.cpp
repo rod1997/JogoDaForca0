@@ -18,16 +18,18 @@ int main(){
    cout << "--------------------------------------------" << endl;
 
    string palavra = palavra_aleatoria();
-
+   int conta;
    char letra;
    int vetor[palavra.length()];
    for(int d=0;d<(palavra.length());d++){ vetor[d]=0; }
 
-   cout << palavra << endl;
+   /*cout << palavra << endl;*/
    mostratraco(palavra);
 
-   for(int r=0;r<(palavra.length());r++){
+   for(int r=0;r<(palavra.length()+2);r++){
+       cout << endl << endl << "digite sua letra:" ;
        cin >> letra;
+       cout << endl;
        for(int c=0;c<(palavra.length());c++){
            if(letra==palavra[c]){
                vetor[c]=1;
@@ -40,6 +42,21 @@ int main(){
                cout << " __ ";
            }
        }
+      if(r>2){
+         conta=0;
+         for(int h=0;h<(palavra.length());h++){
+             (vetor[h]>0)?conta++:conta--;
+         }
+         if(conta==(palavra.length())){
+            r=r+10;
+         }
+      }
+   }
+
+   if(conta==(palavra.length())){
+         cout << endl << endl << "PARABENS!! vc ganhou" << endl << endl;
+   }else{
+        cout << endl<< endl << "vc perdeu" << endl << "palavra:" << palavra << endl;
    }
 
    return 0;
