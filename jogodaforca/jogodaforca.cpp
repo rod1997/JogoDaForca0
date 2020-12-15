@@ -1,14 +1,15 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-#include <vector>
 #include <cstdlib>
+#include <vector>
 #include <ctime>
 #include <cstring>
 using namespace std;
 
-string palavra_aleatoria();
-void mostratraco(string palavra);
+string palavra_aleatoria();/* retorna alguma paravra aleatoria do banco de palavras */
+void mostratraco(string palavra); /* para mostrar traços iniciais*/
+
 int main(){
 
    cout << "--------------------------------------------" << endl;
@@ -20,10 +21,12 @@ int main(){
    string palavra = palavra_aleatoria();
    int conta;
    char letra;
-   int vetor[palavra.length()];
-   for(int d=0;d<(palavra.length());d++){ vetor[d]=0; }
 
-   /*cout << palavra << endl;*/
+   /* vetor para salvar se determinada letra ja foi achada em sua respectiva posiçao, 1 para e 0 para nao*/
+   int vetor[palavra.length()];
+   for(int d=0;d<(palavra.length());d++){ vetor[d]=0; }/*loop para zezar todas posiçoes do vetor*/
+
+   /*cout << palavra << endl;cola para teste*/
    mostratraco(palavra);
 
    for(int r=0;r<(palavra.length()+2);r++){
@@ -32,7 +35,7 @@ int main(){
        cout << endl;
        for(int c=0;c<(palavra.length());c++){
            if(letra==palavra[c]){
-               vetor[c]=1;
+               vetor[c]=1;/*aqui é feita a atribuiçao do valor ao vetor se o usuario acerta*/
            }
        }
        for(int t=0;t<(palavra.length());t++){
@@ -44,11 +47,11 @@ int main(){
        }
       if(r>2){
          conta=0;
-         for(int h=0;h<(palavra.length());h++){
+         for(int h=0;h<(palavra.length());h++){/*verifica se o usuario ja acertou todas*/
              (vetor[h]>0)?conta++:conta--;
          }
          if(conta==(palavra.length())){
-            r=r+10;
+            r=r+10;/*aqui sai do loop*/
          }
       }
    }
