@@ -22,7 +22,7 @@ int main(){
    int conta;
    char letra;
 
-   /* vetor para salvar se determinada letra ja foi achada em sua respectiva posiçao, 1 para e 0 para nao*/
+   /* vetor para salvar se determinada letra ja foi achada em sua respectiva posiçao, 1 para sim e 0 para nao*/
    int vetor[palavra.length()];
    for(int d=0;d<(palavra.length());d++){ vetor[d]=0; }/*loop para zezar todas posiçoes do vetor*/
 
