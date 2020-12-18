@@ -7,69 +7,125 @@
 #include <cstring>
 using namespace std;
 
-string palavra_aleatoria();/* retorna alguma paravra aleatoria do banco de palavras */
+/*==============================PROTOTIPOS DAS FUNÇOES============================*/
+
+string palavra_aleatoria(int num_ale);/* retorna alguma paravra aleatoria do banco de palavras */
+
 void mostratraco(string palavra); /* para mostrar traços iniciais*/
 
-int main(){
+int numeroaleatorio();
 
+void mostradica(int num_ale);
+
+/*==============================FUNÇÂO PRINCIPAL===================================*/
+
+int main()
+{
    cout << "--------------------------------------------" << endl;
    cout << "|                                          |" << endl;
    cout << "|               JOGO DA FORCA              |" << endl;
    cout << "|                                          |" << endl;
    cout << "--------------------------------------------" << endl;
 
-   string palavra = palavra_aleatoria();
-   int conta;
+   int num_ale=numeroaleatorio();
+   string palavra = palavra_aleatoria(num_ale);
+
+   int conta_vetor;
    char letra;
 
-   /* vetor para salvar se determinada letra ja foi achada em sua respectiva posiçao, 1 para sim e 0 para nao*/
-   int vetor[palavra.length()];
-   for(int d=0;d<(palavra.length());d++){ vetor[d]=0; }/*loop para zerar todas posiçoes do vetor*/
+   mostradica(num_ale);
 
-   /*cout << palavra << endl;cola para teste*/
+   /* cada posicao do vetor será usada como parametro para verificaçao se determinada letra ja foi descoberta (1 sim, 0 não)*/
+   int vetor[palavra.length()];
+
+   /*loop para zerar todas posiçoes do vetor*/
+   for(int d=0;d<(palavra.length());d++){ vetor[d]=0;}
+
    mostratraco(palavra);
 
-   for(int r=0;r<(palavra.length()+2);r++){
+   /*loop principal*/
+   for(int r=0;r<(palavra.length()+2);r++)
+   {
        cout << endl << endl << "digite sua letra:" ;
        cin >> letra;
        cout << endl;
-       for(int c=0;c<(palavra.length());c++){
-           if(letra==palavra[c]){
-               vetor[c]=1;/*aqui é feita a atribuiçao do valor ao vetor se o usuario acerta*/
+
+       /*loop para varedura e atribuiçao no vetor, se letra foi achadas de valor verdadeiro (1)*/
+       for(int c=0;c<(palavra.length());c++)
+       {
+           if(letra==palavra[c])
+           {
+               vetor[c]=1;
            }
        }
-       for(int t=0;t<(palavra.length());t++){
-           if(vetor[t]==1){
+
+       /*loop para varedura e saida na tela das respectivas letra achadas e nao achadas(vazio)*/
+       for(int t=0;t<(palavra.length());t++)
+       {
+           if(vetor[t]==1)
+           {
                cout << " " << palavra[t] << " ";
-           }else{
+           }else
+           {
                cout << " __ ";
            }
        }
-      if(r>2){
-         conta=0;
-         for(int h=0;h<(palavra.length());h++){/*verifica se o usuario ja acertou todas*/
-             (vetor[h]>0)?conta++:conta--;
+
+      /*faz a verificaçao do andamento do looping e varedura no vetor para ver se todas as letras ja foram achadas*/
+      if(r>2)
+      {
+         conta_vetor=0;
+         for(int h=0;h<(palavra.length());h++)
+         {
+             (vetor[h]>0)?conta_vetor++:conta_vetor--;
          }
-         if(conta==(palavra.length())){
-            r=r+10;/*aqui sai do loop*/
+         if(conta_vetor==(palavra.length()))
+         {
+            r=r+10;/*variavel "r" faz controle do loop*/
          }
       }
    }
 
-   if(conta==(palavra.length())){
+   if(conta_vetor==(palavra.length()))
+   {
          cout << endl << endl << "PARABENS!! vc ganhou" << endl << endl;
-   }else{
+   }else
+   {
         cout << endl<< endl << "vc perdeu" << endl << "palavra:" << palavra << endl;
    }
 
    return 0;
+}
+/*=====================================FUNÇOES===========================================*/
+
+void mostradica(int num_ale)
+{
+   if(num_ale<10){
+         cout << endl << "dica: UMA FRUTA..." << endl;
+   }else if(num_ale>10 && num_ale<20){
+         cout << endl << "dica: UM ANIMAL..." << endl;
+   }else{
+         cout << endl << "dica: UM PAIS.." << endl;
+   }
+}
+
+
+int numeroaleatorio()
+{
+   unsigned seed=time(0);
+   srand(seed);
+   int num_ale=rand()%17;
+
+   return num_ale;
 }
 void mostratraco(string palavra){
    for(int c=0;c<(palavra.length());c++){
       cout << " __ ";
    }
 }
-string palavra_aleatoria()
+
+
+string palavra_aleatoria(int num_ale)
 {
    vector<string> palavras;
    string linha;
@@ -85,9 +141,6 @@ string palavra_aleatoria()
    }else{
       cout << "arquivo nao encontrado";
    }
-   unsigned seed=time(0);
-   srand(seed);
-   int num_ale=rand()%17;
 
    return palavras[num_ale];
 }
