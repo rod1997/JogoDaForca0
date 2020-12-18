@@ -81,7 +81,7 @@ int main()
          }
          if(conta_vetor==(palavra.length()))
          {
-            r=r+10;/*variavel "r" faz controle do loop*/
+            r=r+10;/*variavel "r" faz controle do loop principal*/
          }
       }
    }
