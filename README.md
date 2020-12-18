@@ -1,2 +1,2 @@
-# jogodaforca
-jogo da forca em c++
+# JOGO DA FORCA
+joguinho simples só pra treinar
