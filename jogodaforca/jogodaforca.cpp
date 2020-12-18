@@ -50,7 +50,7 @@ int main()
        cin >> letra;
        cout << endl;
 
-       /*loop para varedura e atribuiçao no vetor, se letra foi achadas de valor verdadeiro (1)*/
+       /*loop para varedura e atribuiçao em respectiva posiçao no vetor, se letra foi achada(1)*/
        for(int c=0;c<(palavra.length());c++)
        {
            if(letra==palavra[c])
